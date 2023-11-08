@@ -1,0 +1,18 @@
+/* AppHeader.css */
+.header {
+	background-color: #333;
+	color: white;
+	padding: 20px;
+	text-align: center;
+}
+
+.app-header {
+	font-size: 36px;
+	margin: 0;
+}
+
+.countTasks {
+	font-size: 14px;
+	margin: 10px 0;
+	color: gray;
+}

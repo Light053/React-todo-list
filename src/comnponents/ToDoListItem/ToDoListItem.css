@@ -1,0 +1,53 @@
+.taskAndButtons {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	margin: 5px 0;
+	background-color: #e4e4e4;
+}
+
+.ToDoListItem {
+	flex: 1;
+	margin: 0;
+	font-size: 20px;
+}
+
+.ToDoListItemImportant {
+	color: red;
+	/* Цвет для важных задач */
+	font-weight: bold;
+}
+
+.doneTask {
+	text-decoration: line-through;
+	color: #999;
+}
+
+.buttons {
+	display: flex;
+}
+
+button {
+	background: none;
+	border: none;
+	cursor: pointer;
+	padding: 5px;
+	margin: 0 5px;
+	font-size: 20px;
+}
+
+button.excl:hover {
+	color: orange;
+
+}
+
+button.trash:hover {
+	color: red;
+}
+
+button.done:hover {
+	color: green;
+}

@@ -1,0 +1,19 @@
+.filterButtons {
+	background-color: white;
+	color: black;
+	border: 1px solid black;
+	padding: 5px 10px;
+	margin: 5px;
+	cursor: pointer;
+	transition: background-color 0.3s, color 0.3s;
+	border-radius: 5px;
+}
+
+.filterButtons:hover {
+	background-color: black;
+	color: white;
+}
+
+.buttonsDiv {
+	display: inline-block;
+}

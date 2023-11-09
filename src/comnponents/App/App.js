@@ -1,38 +1,53 @@
 import React, { useState, useEffect } from "react";
-
 import AppHeader from "../AppHeader/AppHeader";
 import ToDoList from "../ToDoList/ToDoList";
 import AddTask from '../AddTask/AddTask'
 import { FilterImportantTask, AllTasks, DoneTasks } from "../FilterTask/FilterTask";
-
 import "./App.css"
 
 const App = () => {
-  const [todoList, setTodoList] = useState([
-    { label: 'Поспать', important: false, id: 1, done: false },
-    { label: 'Поучиться', important: false, id: 2, done: false },
-    { label: 'Поиграть', important: false, id: 3, done: false },
-    { label: 'Почитать', important: false, id: 4, done: false }
-  ]);
+  // Используем хук useState с функцией-инициализатором для получения данных из локального хранилища
+  const [todoList, setTodoList] = useState(() => {
+
+    // Попробуем получить данные из локального хранилища, если они там есть
+    const savedTasks = localStorage.getItem('tasks');
+    return savedTasks ? JSON.parse(savedTasks) : [
+      { label: 'Поспать', important: false, id: Date.now(), done: false },
+      { label: 'Поучиться', important: false, id: Date.now(), done: false },
+      { label: 'Поиграть', important: false, id: Date.now(), done: false },
+      { label: 'Почитать', important: false, id: Date.now(), done: false }
+    ];
+  });
 
   const [checkPush, setCheckPush] = useState(false);
   const [taskList, setTaskList] = useState([]);
-  /* Создаем стейт что проверяет нажата ли кнопка фильтрации
-  Так же стейт taskList что содержит все задачи из todoList до применения фильтров  
-  */
+
   useEffect(() => {
     if (checkPush === false) {
+      localStorage.setItem('tasks', JSON.stringify(todoList));
       setTaskList(todoList.map(task => ({ ...task })))
     }
-  }, [todoList]); // меняет taskList в зависимости от того был ли нажат фильтр или же нет
+  }, [todoList, checkPush]);
 
+  // Возвращаем JSX
   return (
     <div className="app">
+      {/* Выводим заголовок приложения */}
       <AppHeader todos={todoList} />
+
+      {/* Компонент фильтрации по важности */}
       <FilterImportantTask todos={todoList} setToDoList={setTodoList} setCheckPush={setCheckPush} />
+
+      {/* Компонент для отображения всех задач */}
       <AllTasks taskList={taskList} setTodoList={setTodoList} setCheckPush={setCheckPush} />
+
+      {/*Компонент для отображения выполненных задач */}
       <DoneTasks todos={todoList} setToDoList={setTodoList} setCheckPush={setCheckPush} />
+
+      {/* Компонент для отображения списка задач */}
       <ToDoList todos={todoList} setTodoList={setTodoList} />
+
+      {/* Компонент для добавления новой задачи */}
       <AddTask todos={todoList} setTodoList={setTodoList} />
     </div>
   );

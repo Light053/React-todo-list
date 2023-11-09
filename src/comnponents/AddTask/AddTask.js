@@ -10,14 +10,23 @@ const AddTask = ({ todos, setTodoList }) => {
 		setNewTask(e.target.value);
 	}
 
+	const handleKeyPress = (event) => {
+		if (event.key === "Enter") {
+			onAddTask();
+		}
+	}; // добавление задачи так же при нажатии на enter 
+
 	// Функция для добавления новой задачи
 	const onAddTask = () => {
 		if (newTask.trim() !== "") { // Проверка на пустое значение
 			// Создание новой задачи и обновление списка задач
+
+			const nextId = Date.now();
+			console.log(nextId);
 			const updatedList = [...todos, {
 				label: newTask,
 				important: false,
-				id: todos.length + 1
+				id: nextId
 			}];
 			setTodoList(updatedList);
 			setNewTask(""); // Сброс значения поля ввода
@@ -26,7 +35,7 @@ const AddTask = ({ todos, setTodoList }) => {
 
 	return (
 		<div>
-			<input className="inputTask" type="text" id="addTask" onChange={handleInputChange} placeholder="Введите новую задачу" value={newTask} />
+			<input className="inputTask" type="text" id="addTask" onKeyDown={handleKeyPress} onChange={handleInputChange} placeholder="Введите новую задачу" value={newTask} />
 			<button type="button" className="addTaskButton" onClick={() => onAddTask()}>Добавить</button>
 		</div> // поле ввода и сама кнопка. Вызывается функция handleInputChange что получает значение поля ввода
 	)

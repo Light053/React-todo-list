@@ -1,5 +1,5 @@
 .inputTask {
-	width: 70%;
+	width: 80%;
 	padding: 10px;
 	font-size: 16px;
 	border: 1px solid #ccc;
@@ -17,6 +17,7 @@
 	cursor: pointer;
 	font-weight: 500;
 	transition: background-color 0.3s, color 0.3s;
+
 }
 
 

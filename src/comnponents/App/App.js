@@ -12,7 +12,7 @@ const App = () => {
     { label: 'Поспать', important: false, id: 1, done: false },
     { label: 'Поучиться', important: false, id: 2, done: false },
     { label: 'Поиграть', important: false, id: 3, done: false },
-    { label: 'Захватить Польшу', important: false, id: 4, done: false }
+    { label: 'Почитать', important: false, id: 4, done: false }
   ]);
 
   const [checkPush, setCheckPush] = useState(false);

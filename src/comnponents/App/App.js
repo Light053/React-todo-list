@@ -12,10 +12,10 @@ const App = () => {
     // Попробуем получить данные из локального хранилища, если они там есть
     const savedTasks = localStorage.getItem('tasks');
     return savedTasks ? JSON.parse(savedTasks) : [
-      { label: 'Поспать', important: false, id: Date.now(), done: false },
-      { label: 'Поучиться', important: false, id: Date.now(), done: false },
-      { label: 'Поиграть', important: false, id: Date.now(), done: false },
-      { label: 'Почитать', important: false, id: Date.now(), done: false }
+      { label: 'Поспать', important: false, id: Date.now() + 543534, done: false },
+      { label: 'Поучиться', important: false, id: Date.now() + 12345, done: false },
+      { label: 'Поиграть', important: false, id: Date.now() + 6678, done: false },
+      { label: 'Почитать', important: false, id: Date.now() + 65444, done: false }
     ];
   });
 
